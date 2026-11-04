@@ -1,128 +1,166 @@
-# Ad Squad 🎯
+# Ad-Squad 🚀
+### Your AI-powered advertising team.
 
-**An AI ad team for small Indian advertisers running Meta (Facebook/Instagram) ads on ₹5,000 to ₹50,000.**
+**Four AI agents. One advertising squad. Better marketing decisions.**
 
-Most beginners lose their first ₹10k because they launch one ad, one hook, one audience, and then nobody watches the numbers. Ad Squad is a [Claude Skill](https://docs.claude.com) that acts like a 4-person team so that doesn't happen to you.
+Ad-Squad is an open-source AI advertising team designed to help small businesses research competitors, generate compelling ad creatives, understand their target audience, and improve advertising performance.
 
-> ⚠️ Ad Squad gives structure and honest hints. It **cannot promise sales, leads or ROAS.** Always check Meta's ad policies and your own numbers.
+Built with AI agents and designed with small businesses in mind, Ad-Squad aims to make advertising expertise more accessible without requiring an entire marketing team.
+
+[![GitHub stars](https://img.shields.io/github/stars/adiiiexe/Ad-Squad?style=social)](https://github.com/adiiiexe/Ad-Squad/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/adiiiexe/Ad-Squad?style=social)](https://github.com/adiiiexe/Ad-Squad/network/members)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen)](https://github.com/adiiiexe/Ad-Squad)
 
 ---
 
-## Meet the squad
+## 💡 Why Ad-Squad?
 
-| Teammate | Job | File |
+Running successful advertisements isn't easy.
+
+Small businesses often struggle with:
+- Understanding their competitors.
+- Writing attention-grabbing advertisements.
+- Identifying the right target audience.
+- Understanding campaign performance.
+- Making informed advertising decisions with limited budgets.
+
+Hiring an entire marketing team isn't always practical.
+
+**What if you could have an advertising team powered by AI?**
+
+That's the idea behind Ad-Squad.
+
+## 🤖 Meet Your AI Team
+
+Ad-Squad consists of four specialized AI agents, each responsible for a different part of the advertising process.
+
+| Agent | Role | Responsibility |
 |---|---|---|
-| 🔍 **Scout** | Finds what competitors are running (Meta Ad Library) and what gaps nobody uses | `scout.md` |
-| ✍️ **Hooks** | Writes 5 ad hooks per product: pain, curiosity, social proof, offer/urgency, before-after | `hooks.md` |
-| 👥 **Personas** | Rewrites the same offer for students, homemakers, professionals, shop owners, parents and job seekers | `personas.md` |
-| 📊 **Coach** | Reads your ad numbers and says what to pause, scale and test next | `coach.md` + `scripts/analyze_ads.py` |
+| 🔍 Scout | Research Analyst | Competitor and market research |
+| ✍️ Hooks | Creative Strategist | Ad hooks, headlines and copywriting |
+| 🎯 Personas | Audience Strategist | Customer personas and audience insights |
+| 📊 Coach | Performance Analyst | Campaign analysis and optimization suggestions |
 
-You get a short **Squad Report** you can copy straight into Meta Ads Manager, plus a **Launch Plan** that splits your budget across tests (never one ad with all the money).
+### 1. Scout — The Research Analyst
+Researches competitors, identifies market opportunities, and helps understand the advertising landscape.
 
----
+### 2. Hooks — The Creative Strategist
+Generates advertising hooks, headlines, and creative copy designed to capture attention.
 
-## Install
+### 3. Personas — The Audience Strategist
+Helps identify potential customers, understand their interests, and develop customer personas.
 
-**Claude.ai**
-1. Download `ad-squad.skill` (from the Releases page) or zip the `ad-squad` folder.
-2. Go to **Settings → Capabilities → Skills → Upload skill**.
-
-**Claude Code**
-```bash
-git clone https://github.com/YOUR-USERNAME/ad-squad ~/.claude/skills/ad-squad
-```
-
-**For the CSV analyzer** (optional, Python 3.8+):
-```bash
-pip install pandas
-```
+### 4. Coach — The Performance Analyst
+Helps interpret campaign performance and suggests ways to improve advertising decisions.
 
 ---
 
-## How to use it
+## ⚡ Key Features
 
-Just talk to Claude. The skill switches on when you mention Meta ads, Facebook/Instagram ads, hooks, ad copy, ad budget, ROAS, CPA, or upload a Meta Ads CSV.
+- Multi-agent advertising workflow.
+- AI-powered competitor research.
+- Advertising hook and copy generation.
+- Customer persona development.
+- Campaign performance analysis.
+- Designed with small businesses in mind.
+- Open-source and customizable.
 
-**Example prompts**
-1. *"I sell homemade pickles in Nanded for ₹250/jar. I have ₹10,000. Plan my Meta ads in Marathi and Hinglish."*
-2. *"My Instagram ads got 40 clicks and zero sales. What's wrong?"*
-3. *"Here's my Ads Manager CSV. My target is ₹150 per lead. What should I pause or scale?"*
+## 🛠️ Installation
 
-Ad Squad first asks only for what's missing: product, price, city, goal (sales or leads), budget, where people should land (website, WhatsApp or call) and your language (Hindi, Marathi, English or Hinglish).
-
----
-
-## The CSV analyzer
-
-Export your ads from Meta Ads Manager as CSV, then run:
+Clone the repository:
 
 ```bash
-python scripts/analyze_ads.py tests/sample_ads.csv --target-cpr 150
+git clone https://github.com/adiiiexe/Ad-Squad.git
 ```
 
-It calculates CTR, CPC and cost per result for every ad and flags each one:
+Navigate into the project:
 
-| Flag | Meaning |
-|---|---|
-| **PAUSE** | Low CTR, spending with no results, or audience fatigue |
-| **SCALE** | Beats your target cost per result (raise budget by 20% at most, every 2 to 3 days) |
-| **FIX LANDING PAGE** | Good CTR but no conversions, so the problem is the page, offer, price or tracking |
-| **WAIT** | Not enough data yet (under ₹300 spent) or no clear winner |
+```bash
+cd Ad-Squad
+```
 
-**Default thresholds** (edit the constants at the top of `scripts/analyze_ads.py` and the table in `coach.md`):
+Follow the installation instructions and setup requirements for your AI environment.
 
-| Rule | Default |
-|---|---|
-| Low CTR | below 0.8% after ~1,000 impressions |
-| Good CTR | above 1.5% |
-| Landing-page check | 0 results after ~100 clicks |
-| Pause threshold | spend above 2x target cost per result with 0 results |
-| Minimum data | ₹300 spent per ad |
-| Frequency limit | above 3 |
-| Scaling step | max 20% every 2 to 3 days |
+### Claude Code / Claude Skills
 
-The script copes with different Meta column names and shows a clear error if a column or the data is missing.
+If you're installing the skill directly into your Claude skills directory:
+
+```bash
+git clone https://github.com/adiiiexe/Ad-Squad.git ~/.claude/skills/ad-squad
+```
+
+Restart your Claude environment if necessary and follow the skill's usage instructions.
 
 ---
 
-## Folder structure
+## 🎯 Who Is Ad-Squad For?
 
-```
-ad-squad/
-├── SKILL.md              # workflow and rules Claude follows
-├── scout.md              # competitor research
-├── hooks.md              # hook writing + honest-claims rules
-├── personas.md           # six Indian audience personas
-├── coach.md              # decision rules for your numbers
-├── scripts/
-│   └── analyze_ads.py    # CSV analyzer
-└── tests/
-    └── sample_ads.csv    # 6 fake ads to try the script
-```
+- Small business owners.
+- Entrepreneurs and startup founders.
+- Digital marketers.
+- Freelance advertising professionals.
+- Developers exploring AI agents.
+- People interested in marketing automation.
+
+## 🗺️ Roadmap
+
+We're continuously exploring ways to improve Ad-Squad.
+
+- [ ] Improve multi-agent collaboration.
+- [ ] Expand industry-specific advertising strategies.
+- [ ] Improve campaign analysis.
+- [ ] Add support for Google Ads.
+- [ ] Expand regional-language advertising capabilities.
+- [ ] Improve reporting and analytics.
+- [ ] Welcome community-built agents and integrations.
+
+Have an idea? Open an issue!
 
 ---
 
-## Rules built into the skill
-- Never promises results.
-- Never invents competitor ads, testimonials or statistics.
-- Labels guesses clearly as **"Assumption"**.
-- Keeps language simple for beginners.
-- Reminds you about Meta policy and Indian ad rules (ASCI) for health, finance and income claims.
+## 🤝 Contributing
+
+Ad-Squad is open source, and contributions are welcome.
+
+Whether you're fixing bugs, improving an existing agent, suggesting features, or building new integrations, your contribution matters.
+
+1. Fork this repository.
+2. Create a new branch.
+3. Make your changes.
+4. Submit a pull request.
+
+You can also open an issue to suggest improvements or report bugs.
+
+**Let's build something useful together.**
 
 ---
 
-## Contributing
+## ⭐ Support the Project
 
-Contributions are welcome, especially:
-- Hook examples in Marathi, Hindi, Tamil, Bengali, Gujarati and other Indian languages
-- Industry-specific personas (salons, tuition classes, restaurants, real estate)
-- Better thresholds from real small-budget campaigns (share what you tested)
-- Bug fixes for the analyzer on different Meta export formats
+If you find Ad-Squad interesting or useful:
 
-Open an issue or send a pull request. Please don't include real customer data in `tests/`.
+- Give this repository a ⭐ Star.
+- Share it with other developers.
+- Try it out and share your feedback.
+- Contribute new ideas and improvements.
 
-## License
-MIT. Add a `LICENSE` file to your repo.
+Every contribution helps the project grow.
 
-## Disclaimer
-Ad Squad is not affiliated with Meta or Anthropic. Ad results depend on your product, price, offer, market and budget. Use the advice as a starting point and always verify in Ads Manager.
+---
+
+## 📄 License
+
+Ad-Squad is licensed under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+### Built with curiosity, AI, and a vision to make advertising more accessible.
+
+**Made by [Aditya Pangashe](https://github.com/adiiiexe)**
+
+[GitHub Repository](https://github.com/adiiiexe/Ad-Squad) · [Report an Issue](https://github.com/adiiiexe/Ad-Squad/issues)
+
+</div>
